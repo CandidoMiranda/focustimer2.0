@@ -1,104 +1,22 @@
-// Controls
-const playTimerButton = document.querySelector('#play')
-const pauseTimerButton = document.querySelector('#pause')
-const stopTimerButton = document.querySelector('#stop')
-const addMinutesTimerButton = document.querySelector('#add-minutes')
-const subtractMinutesTimerButton = document.querySelector('#sub-minutes')
+import Sound from './sounds.js'
+import Timer from './timer.js'
+import Controls from './controls.js'
+import Events from './events.js'
+import {
+  buttonPlay,
+  buttonPause,
+  minutesDisplay,
+  secondsDisplay
+} from './elements.js'
 
-// Timer HTML elements
-const minutesDisplay = document.querySelector('#minutes')
-const secondsDisplay = document.querySelector('#seconds')
+const controls = Controls({ buttonPlay, buttonPause })
 
-// Initial minutes
-let minutes = minutesDisplay.textContent
-
-// timerTimeOut to pause
-let timerTimeOut
-
-// click events
-playTimerButton.addEventListener('click', event => {
-  togglePlayPauseButton()
-  countdown()
+const timer = Timer({
+  secondsDisplay,
+  minutesDisplay,
+  resetControls: controls.resetControls
 })
 
-pauseTimerButton.addEventListener('click', event => {
-  togglePlayPauseButton()
-  clearTimeout(timerTimeOut)
-})
+const sound = Sound()
 
-stopTimerButton.addEventListener('click', event => {
-  updateTimerDisplay(minutes, '00')
-  resetControls()
-  resetTimer()
-})
-
-addMinutesTimerButton.addEventListener('click', event => {
-  increaseMinutes()
-})
-
-subtractMinutesTimerButton.addEventListener('click', event => {
-  decreaseMinutes()
-})
-
-// functions
-
-function increaseMinutes() {
-  let oldMinutes = Number(minutesDisplay.textContent)
-  updateTimerDisplay(Number(oldMinutes + 5), Number(secondsDisplay.textContent))
-}
-
-function decreaseMinutes() {
-  let oldMinutes = Number(minutesDisplay.textContent)
-
-  if (Number(oldMinutes - 5) < 0) {
-    resetTimer()
-    resetControls()
-  } else {
-    updateTimerDisplay(
-      Number(oldMinutes - 5),
-      Number(secondsDisplay.textContent)
-    )
-  }
-}
-
-function updateTimerDisplay(minutes, seconds) {
-  minutesDisplay.textContent = String(minutes).padStart(2, '0')
-  secondsDisplay.textContent = String(seconds).padStart(2, '0')
-}
-
-function togglePlayPauseButton() {
-  playTimerButton.classList.toggle('hide')
-  pauseTimerButton.classList.toggle('hide')
-}
-
-function resetControls() {
-  playTimerButton.classList.remove('hide')
-  pauseTimerButton.classList.add('hide')
-}
-
-function resetTimer() {
-  clearTimeout(timerTimeOut)
-  updateTimerDisplay(minutes, '0')
-}
-
-function countdown() {
-  timerTimeOut = setTimeout(() => {
-    let newSeconds = Number(secondsDisplay.textContent)
-    let newMinutes = Number(minutesDisplay.textContent)
-
-    if (newSeconds <= 0 && newMinutes <= 0) {
-      togglePlayPauseButton()
-      updateTimerDisplay(minutes, '00')
-      return
-    }
-
-    if (newSeconds <= 0) {
-      newSeconds = 60
-      --newMinutes
-    }
-
-    updateTimerDisplay(newMinutes, newSeconds - 1)
-
-    countdown()
-  }, 1000)
-}
+Events({ timer, controls, sound })

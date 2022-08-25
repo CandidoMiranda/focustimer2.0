@@ -134,3 +134,25 @@ grid-area: forest;
   grid-area: fireplace;
 }
 
+.music {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 4rem 3.2rem 0;
+}
+
+.music button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform ease-in-out .3s;
+}
+
+.music button:hover {
+  transform: scale(1.1);
+}
+
+.music img {
+  width: 4.8rem;
+  height: 4.8rem;
+}
