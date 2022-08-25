@@ -51,7 +51,7 @@ export default function Timer({
       }
 
       if (newSeconds <= 0) {
-        newSeconds = 2
+        newSeconds = 60
         --newMinutes
       }
 
