@@ -43,6 +43,15 @@ export default function Events({ controls, timer, sound }) {
   })
 
   forest.addEventListener('click', event => {
+    if (forest.classList.contains('selected')) {
+      forest.classList.remove('selected')
+      sound.forestAudio.pause()
+      return
+    }
+    forest.classList.add('selected')
+    rain.classList.remove('selected')
+    canteen.classList.remove('selected')
+    fireplace.classList.remove('selected')
     sound.forestAudio.play()
     sound.rainAudio.pause()
     sound.canteenAudio.pause()
@@ -50,6 +59,15 @@ export default function Events({ controls, timer, sound }) {
   })
 
   rain.addEventListener('click', event => {
+    if (rain.classList.contains('selected')) {
+      rain.classList.remove('selected')
+      sound.rainAudio.pause()
+      return
+    }
+    forest.classList.remove('selected')
+    rain.classList.add('selected')
+    canteen.classList.remove('selected')
+    fireplace.classList.remove('selected')
     sound.forestAudio.pause()
     sound.rainAudio.play()
     sound.canteenAudio.pause()
@@ -57,6 +75,15 @@ export default function Events({ controls, timer, sound }) {
   })
 
   canteen.addEventListener('click', event => {
+    if (canteen.classList.contains('selected')) {
+      canteen.classList.remove('selected')
+      sound.canteenAudio.pause()
+      return
+    }
+    forest.classList.remove('selected')
+    rain.classList.remove('selected')
+    canteen.classList.add('selected')
+    fireplace.classList.remove('selected')
     sound.forestAudio.pause()
     sound.rainAudio.pause()
     sound.canteenAudio.play()
@@ -64,6 +91,15 @@ export default function Events({ controls, timer, sound }) {
   })
 
   fireplace.addEventListener('click', event => {
+    if (fireplace.classList.contains('selected')) {
+      fireplace.classList.remove('selected')
+      sound.fireplaceAudio.pause()
+      return
+    }
+    forest.classList.remove('selected')
+    rain.classList.remove('selected')
+    canteen.classList.remove('selected')
+    fireplace.classList.add('selected')
     sound.forestAudio.pause()
     sound.rainAudio.pause()
     sound.canteenAudio.pause()

@@ -110,12 +110,21 @@ color: #323238;
   background-color: #02799D;
 }
 
-.sounds-panel .card:hover svg > path {
+.sounds-panel .card svg > path {
   transition: fill ease-in-out .3s;
 }
 
+
 .sounds-panel .card:hover svg > path {
   fill: #fff;
+}
+
+.selected {
+  background-color: #02799D !important;
+}
+
+.selected svg > path {
+    fill: #fff;
 }
 
 .sounds-panel .card:nth-child(1){
