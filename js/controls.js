@@ -1,4 +1,10 @@
-export default function Controls({ buttonPlay, buttonPause }) {
+export default function Controls({
+  buttonPlay,
+  buttonPause,
+  lightMode,
+  darkMode,
+  html
+}) {
   function toggleButton() {
     buttonPlay.classList.toggle('hide')
     buttonPause.classList.toggle('hide')
@@ -9,5 +15,14 @@ export default function Controls({ buttonPlay, buttonPause }) {
     buttonPause.classList.add('hide')
   }
 
-  return { toggleButton, resetControls }
+  function darkModeOnOff() {
+    lightMode.classList.toggle('hide')
+    darkMode.classList.toggle('hide')
+  }
+
+  function switchMode() {
+    html.classList.toggle('dark-mode')
+  }
+
+  return { toggleButton, resetControls, darkModeOnOff, switchMode }
 }

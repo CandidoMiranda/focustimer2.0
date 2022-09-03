@@ -11,6 +11,13 @@ const soundOn = document.querySelector('#sound-on')
 const soundOff = document.querySelector('#sound-off')
 const minutesDisplay = document.querySelector('#minutes')
 const secondsDisplay = document.querySelector('#seconds')
+const lightMode = document.querySelector('#light')
+const darkMode = document.querySelector('#dark')
+const html = document.querySelector('html')
+const forestVolume = document.querySelector('#forestVolume')
+const rainVolume = document.querySelector('#rainVolume')
+const canteenVolume = document.querySelector('#canteenVolume')
+const fireplaceVolume = document.querySelector('#fireplaceVolume')
 
 export {
   buttonPlay,
@@ -25,5 +32,12 @@ export {
   rain,
   fireplace,
   soundOff,
-  soundOn
+  soundOn,
+  lightMode,
+  darkMode,
+  html,
+  rainVolume,
+  canteenVolume,
+  fireplaceVolume,
+  forestVolume
 }

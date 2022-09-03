@@ -9,7 +9,13 @@ import {
   canteen,
   fireplace,
   soundOn,
-  soundOff
+  soundOff,
+  lightMode,
+  darkMode,
+  forestVolume,
+  rainVolume,
+  fireplaceVolume,
+  canteenVolume
 } from './elements.js'
 
 export default function Events({ controls, timer, sound }) {
@@ -116,5 +122,30 @@ export default function Events({ controls, timer, sound }) {
     soundOn.classList.remove('hide')
     soundOff.classList.add('hide')
     sound.bgAudio.play()
+  })
+
+  lightMode.addEventListener('click', event => {
+    controls.darkModeOnOff()
+    controls.switchMode()
+    sound.pressButton()
+  })
+
+  darkMode.addEventListener('click', event => {
+    controls.darkModeOnOff()
+    controls.switchMode()
+    sound.pressButton()
+  })
+
+  forestVolume.addEventListener('input', event => {
+    sound.forestAudio.volume = forestVolume.value
+  })
+  rainVolume.addEventListener('input', event => {
+    sound.rainAudio.volume = rainVolume.value
+  })
+  canteenVolume.addEventListener('input', event => {
+    sound.canteenAudio.volume = canteenVolume.value
+  })
+  fireplaceVolume.addEventListener('input', event => {
+    sound.fireplaceAudio.volume = fireplaceVolume.value
   })
 }

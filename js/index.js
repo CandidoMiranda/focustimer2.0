@@ -6,10 +6,19 @@ import {
   buttonPlay,
   buttonPause,
   minutesDisplay,
-  secondsDisplay
+  secondsDisplay,
+  lightMode,
+  darkMode,
+  html
 } from './elements.js'
 
-const controls = Controls({ buttonPlay, buttonPause })
+const controls = Controls({
+  buttonPlay,
+  buttonPause,
+  lightMode,
+  darkMode,
+  html
+})
 
 const timer = Timer({
   secondsDisplay,
